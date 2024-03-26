@@ -1,0 +1,13 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: ms-config-server
+  cloud:
+    config:
+      server:
+        git:
+          password: ${GITHUB_PASSWORD}
+          uri: https://github.com/freitas022/ms-configs
+          username: ${GITHUB_USER}
+          default-label: main
