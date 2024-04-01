@@ -3,6 +3,7 @@ package freitas.dev.msuser.domain;
 import java.util.UUID;
 import java.util.function.Consumer;
 
+import freitas.dev.msuser.web.dto.UserUpdateRequest;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,10 +29,10 @@ public class User {
 	private String email;
 	private String password;
 
-	public void updateData(String updatedPhone, String updatedEmail, String updatedPassword) {
-		verifyIfNotNull(updatedPhone, this::setPhone);
-		verifyIfNotNull(updatedEmail, this::setEmail);
-		verifyIfNotNull(updatedPassword, this::setPassword);
+	public void updateData(UserUpdateRequest request) {
+		verifyIfNotNull(request.phone(), this::setPhone);
+		verifyIfNotNull(request.email(), this::setEmail);
+		verifyIfNotNull(request.password(), this::setPassword);
 	}
 
 	private void verifyIfNotNull(String value, Consumer<String> setter) {
